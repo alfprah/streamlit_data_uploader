@@ -8,7 +8,7 @@ This Streamlit application provides a universal file uploader that can handle va
 
 ## Features
 
-- **Multi-format Support**: CSV, TXT, and Excel files (.xlsx, .xls)
+- **Universal File Support**: CSV, TXT, and Excel files (.xlsx, .xls) - all formats fully supported
 - **Interactive Column Renaming**: Edit column names using built-in data editor before upload
 - **File Preview**: Preview data structure and content before uploading
 - **Custom Table Naming**: Rename tables before upload with automatic name sanitization
@@ -30,35 +30,25 @@ This Streamlit application provides a universal file uploader that can handle va
 - Database and schema access for table creation/modification
 
 ### 3. Snowpark Configuration
-- Snowpark session must be available in the Streamlit context
-- This typically requires running the app in Snowflake's Streamlit environment or configuring Snowpark connection locally
+- The app runs exclusively in Snowflake's Streamlit environment
+- Uses `get_active_session()` to automatically connect to your Snowflake account
+- No manual connection configuration required
 
 ## Installation
 
-### Option 1: Snowflake Streamlit (Recommended)
-1. Upload all project files to your Snowflake Streamlit app
-2. Use the provided `environment.yml` file
-3. Click "Reboot" in Snowflake Streamlit interface
-4. Excel support depends on available pandas packages
-
-### Option 2: Local Development
-```bash
-# Clone or download the project files
-conda env create -f environment.yml
-conda activate universal_data_uploader
-pip install openpyxl xlrd  # For full Excel support
-streamlit run streamlit_app.py
-```
+### Snowflake Streamlit Deployment
+1. **Create Streamlit App**: In Snowflake, create a new Streamlit app
+2. **Upload Files**: Upload all project files to your Streamlit app:
+   - `streamlit_app.py` (main application)
+   - `environment.yml` (dependencies)
+3. **Configure Environment**: Ensure the `environment.yml` file is recognized
+4. **Reboot**: Click "Reboot" in Snowflake Streamlit interface to install dependencies
+5. **Universal Support**: All file formats (CSV, TXT, Excel) are fully supported
 
 ### Required Dependencies
 - `streamlit` - Web application framework (version 1.28+ recommended for data editor)
-- `pandas` - Data manipulation and analysis
+- `pandas` - Data manipulation and analysis (includes Excel support)
 - `snowflake-snowpark-python` - Snowflake connection and operations
-
-### Optional Dependencies (for Excel support)
-- `openpyxl` - For .xlsx files
-- `xlrd` - For .xls files
-- Excel files will work automatically if pandas has the necessary packages
 
 ### Component Requirements
 - **Interactive Data Editor**: Requires Streamlit 1.23+ for `st.data_editor` functionality
@@ -123,31 +113,26 @@ When deploying for a new user/environment, ensure the Snowpark session connects 
 - **Warehouse**: Compute warehouse to use
 - **Role**: Role with appropriate permissions
 
-### 2. Modify Environment Variables (if using local connection)
+### 2. Snowflake Context Configuration
+The app automatically uses Snowflake's session context when running in Streamlit:
 ```python
-# If running locally, you might need to configure connection parameters
-session = Session.builder.configs({
-    "account": "YOUR_ACCOUNT",
-    "user": "YOUR_USERNAME", 
-    "password": "YOUR_PASSWORD",  # Use environment variable
-    "role": "YOUR_ROLE",
-    "warehouse": "YOUR_WAREHOUSE",
-    "database": "YOUR_DATABASE",
-    "schema": "YOUR_SCHEMA"
-}).create()
+# Automatic session detection in Snowflake Streamlit
+session = get_active_session()
+db = session.get_current_database()
+schema = session.get_current_schema()
+role = session.get_current_role()
+warehouse = session.get_current_warehouse()
 ```
 
 ### 3. File Size Considerations
-- **Streamlit**: Default upload limit is 200MB per file
-- **Snowflake**: Consider warehouse size for large file processing
-- **Memory**: Large files require sufficient system memory
+- **Snowflake Streamlit**: Default upload limit is 200MB per file
+- **Warehouse Size**: Choose appropriate warehouse size for your data volume
+- **Processing**: Large files are processed efficiently within Snowflake's environment
 
 ## Usage Instructions
 
-### 1. Launch the Application
-```bash
-streamlit run streamlit_app.py
-```
+### 1. Access Your Snowflake Streamlit App
+Navigate to your deployed Streamlit app in Snowflake and ensure all files are uploaded with the correct environment configuration.
 
 ### 2. Configure Upload Settings
 - Use the sidebar to configure CSV parsing options:
@@ -157,7 +142,7 @@ streamlit run streamlit_app.py
 
 ### 3. Upload Files
 1. Click "Browse files" or drag and drop files
-2. Supported formats: .csv, .txt, .xlsx, .xls
+2. All formats supported: .csv, .txt, .xlsx, .xls
 3. Multiple files can be selected simultaneously
 
 ### 4. Configure Each File
@@ -238,9 +223,9 @@ Error: Memory error during file processing
 Error: Error getting Snowflake session
 ```
 **Solution**: 
-- Verify Snowpark session configuration
-- Check network connectivity to Snowflake
-- Validate credentials and permissions
+- Ensure app is running in Snowflake Streamlit environment
+- Verify your Snowflake role has necessary permissions
+- Check that Streamlit is properly configured in your Snowflake account
 
 ### Performance Optimization
 
@@ -278,7 +263,7 @@ Error: Error getting Snowflake session
 - Update Python dependencies periodically
 
 ### Logging
-- Application logs available in Streamlit console
+- Application logs available in Snowflake Streamlit interface
 - Snowflake operation logs available in Snowflake query history
 - Error details captured for troubleshooting
 

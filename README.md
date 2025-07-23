@@ -4,7 +4,7 @@ A powerful Streamlit application that enables seamless uploading of various file
 
 ## ✨ Key Features
 
-- **Multi-format Support**: CSV, TXT, and Excel files
+- **Universal File Support**: CSV, TXT, Excel (.xlsx, .xls) - all formats fully supported
 - **Interactive Column Renaming**: Edit column names with built-in data editor
 - **Smart Column Cleaning**: Automatic Snowflake-friendly column naming
 - **File Preview**: Preview data structure and content before upload
@@ -15,18 +15,12 @@ A powerful Streamlit application that enables seamless uploading of various file
 
 ## 🚀 Quick Start
 
-1. **Install Dependencies**
-   ```bash
-   conda env create -f environment.yml
-   conda activate universal_data_uploader
-   ```
+1. **Deploy to Snowflake**
+   - Upload all project files to your Snowflake Streamlit app
+   - Include the `environment.yml` file for dependencies
+   - Click "Reboot" to install packages
 
-2. **Launch Application**
-   ```bash
-   streamlit run streamlit_app.py
-   ```
-
-3. **Upload Files**
+2. **Start Using**
    - Drag & drop or browse for files
    - Configure table names and CSV options
    - Load preview and rename columns interactively
@@ -34,15 +28,16 @@ A powerful Streamlit application that enables seamless uploading of various file
 
 ## 📁 Supported File Formats
 
-| Format | Extensions | Requirements |
-|--------|------------|--------------|
-| CSV | `.csv` | ✅ Built-in support |
-| Text | `.txt` | ✅ Assumed CSV format |
-| Excel | `.xlsx, .xls` | ⚡ Works if pandas has Excel support |
+| Format | Extensions | Status |
+|--------|------------|--------|
+| CSV | `.csv` | ✅ Fully supported |
+| Text | `.txt` | ✅ Fully supported |
+| Excel | `.xlsx, .xls` | ✅ Fully supported |
 
 ## ⚙️ Configuration
 
 ### Snowflake Requirements
+- Snowflake account with Streamlit enabled
 - Active Snowpark session
 - Database and schema access
 - Table creation permissions
@@ -72,18 +67,13 @@ Original columns are automatically converted:
 - NULL values properly handled (`NaN`, `<NA>`, `None` → `NULL`)
 - Empty fields become NULL based on CSV options
 
-## 🔧 Demo & Testing
+## 🔧 Testing the App
 
-### Test Files
-- **`demo_data.csv`** - Sample CSV for testing basic functionality
-- **`demo_data.xlsx`** - Sample Excel file (convert to CSV before uploading)
-
-### Testing the App
-1. **Upload CSV files** - Works immediately
-2. **Convert Excel to CSV** - For Excel files, save as CSV first
-3. **Test column renaming** - Load preview and edit column names
-4. **Test different delimiters** - Try semicolon, tab, pipe separators
-5. **Preview functionality** - Test the data preview and interactive editor
+1. **Upload any supported file** - CSV, TXT, Excel files all work immediately
+2. **Test column renaming** - Load preview and edit column names
+3. **Test different delimiters** - Try semicolon, tab, pipe separators
+4. **Preview functionality** - Test the data preview and interactive editor
+5. **Multi-format batch** - Upload mixed file types together
 
 ## 📚 Documentation
 
