@@ -1,4 +1,4 @@
-# 🚀 Universal Data Uploader to Snowflake
+# "Universal" Data Uploader to Snowflake
 
 A powerful Streamlit application that enables seamless uploading of various file formats (.csv, .txt, .xlsx, .xls) directly to Snowflake tables with intelligent column name cleaning and data processing.
 
