@@ -2,6 +2,8 @@
 
 A powerful Streamlit application that enables seamless uploading of various file formats (.csv, .txt, .xlsx, .xls) directly to Snowflake tables with intelligent column name cleaning and data processing.
 
+*Disclaimer: This app is provided as a sample resource for your convenience. It is not officially supported by Snowflake and is provided "as is," without warranty or liability. Please review the code and validate it for your use case before deploying in a production environment.*
+
 ## ✨ Key Features
 
 - **Universal File Support**: CSV, TXT, Excel (.xlsx, .xls) - all formats fully supported
