@@ -3,8 +3,7 @@
 > **Open Source Project**: This is a community-driven tool for Snowflake users. Contributions and feedback welcome!
 
 ## Overview
-
-This Streamlit application provides a universal file uploader that can handle various file formats (.csv, .txt, .xlsx, .xls) and upload them directly to Snowflake tables with automatic column name cleaning and data type standardization.
+*Disclaimer: This app is provided as a sample resource for your convenience. It is not officially supported by Snowflake and is provided "as is," without warranty or liability. Please review the code and validate it for your use case before deploying in a production environment.* This Streamlit application provides a universal file uploader that can handle various file formats (.csv, .txt, .xlsx, .xls) and upload them directly to Snowflake tables with automatic column name cleaning and data type standardization.
 
 ## Features
 
