@@ -1,10 +1,23 @@
-# "Universal" Data Uploader to Snowflake
+# Universal Data Uploader to Snowflake
 
 A powerful Streamlit application that enables seamless uploading of various file formats (.csv, .txt, .xlsx, .xls) directly to Snowflake tables with intelligent column name cleaning and data processing.
 
 *Disclaimer: This app is provided as a sample resource for your convenience. It is not officially supported by Snowflake and is provided "as is," without warranty or liability. Please review the code and validate it for your use case before deploying in a production environment.*
 
-## ✨ Key Features
+## Table of Contents
+
+- [Key Features](#key-features)
+- [Quick Start](#quick-start)
+- [Supported File Formats](#supported-file-formats)
+- [Configuration](#configuration)
+- [Data Processing](#data-processing)
+- [Testing the App](#testing-the-app)
+- [Documentation](#documentation)
+- [Architecture](#architecture)
+- [Advanced Features](#advanced-features)
+- [Contributing](#contributing)
+
+## Key Features
 
 - **Universal File Support**: CSV, TXT, Excel (.xlsx, .xls) - all formats fully supported
 - **Interactive Column Renaming**: Edit column names with built-in data editor
@@ -15,7 +28,7 @@ A powerful Streamlit application that enables seamless uploading of various file
 - **Progress Tracking**: Real-time upload status and error reporting
 - **Configurable CSV Options**: Customize delimiters, headers, and quote characters
 
-## 🚀 Quick Start
+## Quick Start
 
 1. **Deploy to Snowflake**
    - Upload all project files to your Snowflake Streamlit app
@@ -28,15 +41,15 @@ A powerful Streamlit application that enables seamless uploading of various file
    - Load preview and rename columns interactively
    - Click "Upload All Files"
 
-## 📁 Supported File Formats
+## Supported File Formats
 
 | Format | Extensions | Status |
 |--------|------------|--------|
-| CSV | `.csv` | ✅ Fully supported |
-| Text | `.txt` | ✅ Fully supported |
-| Excel | `.xlsx, .xls` | ✅ Fully supported |
+| CSV | `.csv` | Fully supported |
+| Text | `.txt` | Fully supported |
+| Excel | `.xlsx, .xls` | Fully supported |
 
-## ⚙️ Configuration
+## Configuration
 
 ### Snowflake Requirements
 - Snowflake account with Streamlit enabled
@@ -50,7 +63,7 @@ A powerful Streamlit application that enables seamless uploading of various file
 - **Headers**: First row contains column names
 - **Quote Character**: Text field enclosure
 
-## 📊 Data Processing
+## Data Processing
 
 ### Interactive Column Renaming
 1. **Load Preview** - Click to load data and see first 10 rows
@@ -69,7 +82,7 @@ Original columns are automatically converted:
 - NULL values properly handled (`NaN`, `<NA>`, `None` → `NULL`)
 - Empty fields become NULL based on CSV options
 
-## 🔧 Testing the App
+## Testing the App
 
 1. **Upload any supported file** - CSV, TXT, Excel files all work immediately
 2. **Test column renaming** - Load preview and edit column names
@@ -77,17 +90,17 @@ Original columns are automatically converted:
 4. **Preview functionality** - Test the data preview and interactive editor
 5. **Multi-format batch** - Upload mixed file types together
 
-## 📚 Documentation
+## Documentation
 
 For detailed setup instructions, permissions, and troubleshooting, see [requirements.md](requirements.md).
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 User Files → Streamlit UI → Pandas → Column Cleaning → Snowpark → Snowflake Tables
 ```
 
-## 💡 Advanced Features
+## Advanced Features
 
 - **Interactive UI**: Modern data editor for column renaming
 - **Session Management**: Persistent configuration across interactions
@@ -98,7 +111,7 @@ User Files → Streamlit UI → Pandas → Column Cleaning → Snowpark → Snow
 - **Security**: Inherits user's Snowflake permissions
 - **Logging**: Comprehensive logging for troubleshooting
 
-## 🤝 Contributing
+## Contributing
 
 This application can be easily extended to support:
 - Additional file formats
